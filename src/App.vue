@@ -5,14 +5,14 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.png"/>
+    <img alt="account logo" class="logo" src="@/assets/logo.png"/>
 
     <div class="wrapper">
       <HelloWorld msg="Start the journey of exploration!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/portfolio">Portfolio</RouterLink>
       </nav>
     </div>
   </header>

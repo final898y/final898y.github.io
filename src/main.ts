@@ -1,3 +1,7 @@
+// Import our Bootstrap's custom CSS、JS
+import '../src/assets/scss/styles.scss'
+import * as bootstrap from 'bootstrap'
+
 import './assets/main.css'
 
 import { createApp } from 'vue'
