@@ -8,19 +8,17 @@
         </div>
         <div class="about-text">
           <p>
-            Hello! I'm a passionate web developer with expertise in front-end
-            and back-end technologies. I love creating responsive, user-friendly
-            websites and applications.
+            Hello! I'm a passionate web developer with expertise in front-end and back-end
+            technologies. I love creating responsive, user-friendly websites and applications.
           </p>
           <p>
-            My journey in web development started several years ago, and since
-            then, I've been continuously learning and improving my skills to
-            stay up-to-date with the latest technologies and best practices.
+            My journey in web development started several years ago, and since then, I've been
+            continuously learning and improving my skills to stay up-to-date with the latest
+            technologies and best practices.
           </p>
           <p>
-            When I'm not coding, you can find me exploring new tech,
-            contributing to open-source projects, or enjoying outdoor
-            activities.
+            When I'm not coding, you can find me exploring new tech, contributing to open-source
+            projects, or enjoying outdoor activities.
           </p>
         </div>
       </div>
@@ -29,11 +27,7 @@
     <section class="section featured-work">
       <h2 class="section-title">Featured Projects</h2>
       <div class="cards-grid">
-        <div
-          class="card"
-          v-for="(project, index) in featuredProjects"
-          :key="index"
-        >
+        <div class="card" v-for="(project, index) in featuredProjects" :key="index">
           <div class="card-image">
             <img :src="project.image" :alt="project.title" />
           </div>
@@ -41,66 +35,51 @@
             <h3 class="card-title">{{ project.title }}</h3>
             <p class="card-description">{{ project.description }}</p>
             <div class="card-tags">
-              <span
-                v-for="(tag, tagIndex) in project.tags"
-                :key="tagIndex"
-                class="tag"
-              >
+              <span v-for="(tag, tagIndex) in project.tags" :key="tagIndex" class="tag">
                 {{ tag }}
               </span>
             </div>
-            <router-link
-              :to="`/portfolio#project-${index}`"
-              class="btn btn-primary"
-            >
+            <router-link :to="`/portfolio#project-${index}`" class="btn btn-primary">
               View Details
             </router-link>
           </div>
         </div>
       </div>
       <div class="view-all">
-        <router-link to="/portfolio" class="btn btn-secondary"
-          >View All Projects</router-link
-        >
+        <router-link to="/portfolio" class="btn btn-secondary">View All Projects</router-link>
       </div>
     </section>
     <section class="section contact">
       <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-text">
-        Have a project in mind or want to chat? Feel free to reach out!
-      </p>
-      <a href="mailto:youremail@example.com" class="btn btn-primary"
-        >Contact Me</a
-      >
+      <p class="contact-text">Have a project in mind or want to chat? Feel free to reach out!</p>
+      <a href="mailto:youremail@example.com" class="btn btn-primary">Contact Me</a>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
 const featuredProjects = ref([
   {
-    title: "E-commerce Website",
-    description:
-      "A fully responsive e-commerce website with secure payment processing.",
-    image: "../assets/project1-placeholder.png",
-    tags: ["Vue.js", "Node.js", "Express", "MongoDB"],
+    title: 'E-commerce Website',
+    description: 'A fully responsive e-commerce website with secure payment processing.',
+    image: '',
+    tags: ['Vue.js', 'Node.js', 'Express', 'MongoDB'],
   },
   {
-    title: "Task Management App",
-    description:
-      "A productivity application to help users organize and track their tasks.",
-    image: "../assets/project2-placeholder.png",
-    tags: ["React", "Firebase", "Tailwind CSS"],
+    title: 'Task Management App',
+    description: 'A productivity application to help users organize and track their tasks.',
+    image: '',
+    tags: ['React', 'Firebase', 'Tailwind CSS'],
   },
   {
-    title: "Portfolio Website",
-    description: "A modern portfolio website for a professional photographer.",
-    image: "../assets/project3-placeholder.png",
-    tags: ["Vue.js", "SCSS", "Responsive Design"],
+    title: 'Portfolio Website',
+    description: 'A modern portfolio website for a professional photographer.',
+    image: '',
+    tags: ['Vue.js', 'SCSS', 'Responsive Design'],
   },
-]);
+])
 </script>
 
 <style scoped>

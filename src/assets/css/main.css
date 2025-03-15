@@ -1,0 +1,31 @@
+:root {
+  --primary-color: #4d869c;
+  --secondary-color: #7ab2b2;
+  --accent-color: #fa7070;
+  --text-color: #333333;
+  --light-color: #cde8e5;
+  --background-color: #eef7ff;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--light-color);
+  color: var(--text-color);
+}
+
+.btn-primary:hover {
+  background-color: #e64a19;
+}

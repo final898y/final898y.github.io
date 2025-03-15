@@ -10,7 +10,7 @@
         <h2 class="card-title">Profile Overview</h2>
         <div class="profile-content">
           <div class="profile-avatar">
-            <img src="../assets/avatar-placeholder.png" alt="Profile avatar" />
+            <img src="../assets/pic/logo.png" alt="Profile avatar" />
           </div>
           <div class="profile-info">
             <h3>{{ userEmail }}</h3>
@@ -45,11 +45,7 @@
       <div class="section dashboard-card">
         <h2 class="card-title">Recent Activities</h2>
         <ul class="activity-list">
-          <li
-            class="activity-item"
-            v-for="(activity, index) in recentActivities"
-            :key="index"
-          >
+          <li class="activity-item" v-for="(activity, index) in recentActivities" :key="index">
             <div class="activity-icon" :class="activity.type"></div>
             <div class="activity-content">
               <div class="activity-title">{{ activity.title }}</div>
@@ -85,41 +81,41 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted } from 'vue'
 
-const userEmail = ref("");
+const userEmail = ref('')
 const recentActivities = ref([
   {
-    type: "project",
+    type: 'project',
     title: 'Added new project "E-commerce Website"',
-    time: "2 hours ago",
+    time: '2 hours ago',
   },
   {
-    type: "skill",
+    type: 'skill',
     title: 'Updated skill "React" to 80%',
-    time: "Yesterday",
+    time: 'Yesterday',
   },
   {
-    type: "profile",
-    title: "Updated profile information",
-    time: "3 days ago",
+    type: 'profile',
+    title: 'Updated profile information',
+    time: '3 days ago',
   },
   {
-    type: "project",
+    type: 'project',
     title: 'Added new project "Task Management App"',
-    time: "1 week ago",
+    time: '1 week ago',
   },
   {
-    type: "contact",
-    title: "Received new contact message from John",
-    time: "2 weeks ago",
+    type: 'contact',
+    title: 'Received new contact message from John',
+    time: '2 weeks ago',
   },
-]);
+])
 
 onMounted(() => {
   // 从本地存储获取用户信息
-  userEmail.value = localStorage.getItem("userEmail") || "User";
-});
+  userEmail.value = localStorage.getItem('userEmail') || 'User'
+})
 </script>
 
 <style scoped>
@@ -285,7 +281,9 @@ onMounted(() => {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .action-btn:hover {
