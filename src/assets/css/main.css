@@ -12,6 +12,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.section {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: var(--light-color);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
 .btn {
   padding: 10px 20px;
   border: none;

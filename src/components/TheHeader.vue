@@ -3,11 +3,7 @@
     <div class="container">
       <router-link to="/" class="logo"> My Portfolio </router-link>
 
-      <button
-        class="menu-toggle"
-        @click="toggleMobileMenu"
-        aria-label="Toggle menu"
-      >
+      <button class="menu-toggle" @click="toggleMobileMenu" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
@@ -19,26 +15,20 @@
             <router-link to="/" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/portfolio" class="nav-link"
-              >Portfolio</router-link
-            >
+            <router-link to="/portfolio" class="nav-link">Portfolio</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/skills" class="nav-link">Skills</router-link>
           </li>
           <li class="nav-item" v-if="isAuthenticated">
-            <router-link to="/dashboard" class="nav-link"
-              >Dashboard</router-link
-            >
+            <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
           </li>
           <li class="nav-item">
             <template v-if="isAuthenticated">
               <button @click="logout" class="btn btn-primary">Logout</button>
             </template>
             <template v-else>
-              <router-link to="/login" class="btn btn-primary"
-                >Login</router-link
-              >
+              <router-link to="/login" class="btn btn-primary">Login</router-link>
             </template>
           </li>
         </ul>
@@ -48,52 +38,62 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-const router = useRouter();
-const isMobileMenuOpen = ref(false);
-const isAuthenticated = ref(false);
+const router = useRouter()
+const isMobileMenuOpen = ref<boolean>(false)
+const isAuthenticated = ref<boolean>(false)
 
 const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
 
 const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false;
-};
+  isMobileMenuOpen.value = false
+}
 
-const logout = () => {
-  localStorage.removeItem("isAuthenticated");
-  isAuthenticated.value = false;
-  router.push("/login");
-};
+const logout = async () => {
+  try {
+    localStorage.removeItem('isAuthenticated')
+    isAuthenticated.value = false
+    await router.push('/login')
+  } catch (error) {
+    console.error('Failed to navigate to login:', error)
+  }
+}
 
 // 检查用户是否已登录
+let handleClick: (e: MouseEvent) => void
+let handleStorage: () => void
+
 onMounted(() => {
-  isAuthenticated.value = localStorage.getItem("isAuthenticated") === "true";
-  window.addEventListener("click", (e) => {
-    const nav = document.querySelector(".nav");
-    const menuToggle = document.querySelector(".menu-toggle");
+  handleClick = (e: MouseEvent) => {
+    const nav = document.querySelector('.nav')
+    const menuToggle = document.querySelector('.menu-toggle')
     if (
       isMobileMenuOpen.value &&
       nav &&
-      !nav.contains(e.target) &&
-      !menuToggle.contains(e.target)
+      !nav.contains(e.target as Node) &&
+      menuToggle &&
+      !menuToggle.contains(e.target as Node)
     ) {
-      closeMobileMenu();
+      closeMobileMenu()
     }
-  });
+  }
 
-  window.addEventListener("storage", () => {
-    isAuthenticated.value = localStorage.getItem("isAuthenticated") === "true";
-  });
-});
+  handleStorage = () => {
+    isAuthenticated.value = localStorage.getItem('isAuthenticated') === 'true'
+  }
+
+  window.addEventListener('click', handleClick)
+  window.addEventListener('storage', handleStorage)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("click", closeMobileMenu);
-  window.removeEventListener("storage", () => {});
-});
+  window.removeEventListener('click', handleClick)
+  window.removeEventListener('storage', handleStorage)
+})
 </script>
 
 <style scoped>

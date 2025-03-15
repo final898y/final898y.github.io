@@ -2,20 +2,14 @@
   <div class="skills">
     <div class="page-header">
       <h1 class="page-title">My Skills</h1>
-      <p class="page-description">
-        A comprehensive overview of my technical skills and expertise
-      </p>
+      <p class="page-description">A comprehensive overview of my technical skills and expertise</p>
     </div>
 
     <section class="section">
-      <h2 class="section-title">Technical Skills</h2>
+      <div class="section-title">Technical Skills</div>
 
       <div class="skills-categories">
-        <div
-          class="skill-category"
-          v-for="(category, index) in skillCategories"
-          :key="index"
-        >
+        <div class="skill-category" v-for="(category, index) in skillCategories" :key="index">
           <h3 class="category-title">{{ category.name }}</h3>
           <div class="skills-list">
             <div
@@ -28,10 +22,7 @@
                 <span class="skill-level">{{ skill.level }}%</span>
               </div>
               <div class="skill-progress">
-                <div
-                  class="skill-progress-bar"
-                  :style="{ width: `${skill.level}%` }"
-                ></div>
+                <div class="skill-progress-bar" :style="{ width: `${skill.level}%` }"></div>
               </div>
             </div>
           </div>
@@ -43,11 +34,7 @@
       <h2 class="section-title">Education & Certifications</h2>
 
       <div class="timeline">
-        <div
-          class="timeline-item"
-          v-for="(item, index) in educationItems"
-          :key="index"
-        >
+        <div class="timeline-item" v-for="(item, index) in educationItems" :key="index">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <h3 class="timeline-title">{{ item.title }}</h3>
@@ -62,21 +49,14 @@
       <h2 class="section-title">Work Experience</h2>
 
       <div class="timeline">
-        <div
-          class="timeline-item"
-          v-for="(item, index) in experienceItems"
-          :key="index"
-        >
+        <div class="timeline-item" v-for="(item, index) in experienceItems" :key="index">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <h3 class="timeline-title">{{ item.title }}</h3>
             <p class="timeline-subtitle">{{ item.company }}</p>
             <p class="timeline-period">{{ item.period }}</p>
             <ul class="timeline-list">
-              <li
-                v-for="(point, pointIndex) in item.responsibilities"
-                :key="pointIndex"
-              >
+              <li v-for="(point, pointIndex) in item.responsibilities" :key="pointIndex">
                 {{ point }}
               </li>
             </ul>
@@ -88,97 +68,95 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
 const skillCategories = ref([
   {
-    name: "Frontend Development",
+    name: 'Frontend Development',
     skills: [
-      { name: "HTML5", level: 95 },
-      { name: "CSS3/SCSS", level: 90 },
-      { name: "JavaScript", level: 90 },
-      { name: "Vue.js", level: 85 },
-      { name: "React", level: 80 },
+      { name: 'HTML5', level: 95 },
+      { name: 'CSS3/SCSS', level: 90 },
+      { name: 'JavaScript', level: 90 },
+      { name: 'Vue.js', level: 85 },
+      { name: 'React', level: 80 },
     ],
   },
   {
-    name: "Backend Development",
+    name: 'Backend Development',
     skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Express", level: 80 },
-      { name: "MongoDB", level: 75 },
-      { name: "SQL", level: 70 },
-      { name: "Python", level: 65 },
+      { name: 'Node.js', level: 85 },
+      { name: 'Express', level: 80 },
+      { name: 'MongoDB', level: 75 },
+      { name: 'SQL', level: 70 },
+      { name: 'Python', level: 65 },
     ],
   },
   {
-    name: "Tools & Others",
+    name: 'Tools & Others',
     skills: [
-      { name: "Git", level: 90 },
-      { name: "Webpack/Vite", level: 80 },
-      { name: "Responsive Design", level: 95 },
-      { name: "UI/UX Design", level: 70 },
-      { name: "RESTful APIs", level: 85 },
+      { name: 'Git', level: 90 },
+      { name: 'Webpack/Vite', level: 80 },
+      { name: 'Responsive Design', level: 95 },
+      { name: 'UI/UX Design', level: 70 },
+      { name: 'RESTful APIs', level: 85 },
     ],
   },
-]);
+])
 
 const educationItems = ref([
   {
-    title: "Bachelor of Science in Computer Science",
-    period: "2018 - 2022",
-    description:
-      "Graduated with honors, specialized in web development and software engineering.",
+    title: 'Bachelor of Science in Computer Science',
+    period: '2018 - 2022',
+    description: 'Graduated with honors, specialized in web development and software engineering.',
   },
   {
-    title: "Full Stack Web Development Bootcamp",
-    period: "2022",
-    description:
-      "Intensive 12-week program focused on modern web technologies and best practices.",
+    title: 'Full Stack Web Development Bootcamp',
+    period: '2022',
+    description: 'Intensive 12-week program focused on modern web technologies and best practices.',
   },
   {
-    title: "AWS Certified Developer",
-    period: "2023",
+    title: 'AWS Certified Developer',
+    period: '2023',
     description:
-      "Professional certification for designing and developing AWS cloud-based solutions.",
+      'Professional certification for designing and developing AWS cloud-based solutions.',
   },
-]);
+])
 
 const experienceItems = ref([
   {
-    title: "Senior Frontend Developer",
-    company: "TechCorp Solutions",
-    period: "2023 - Present",
+    title: 'Senior Frontend Developer',
+    company: 'TechCorp Solutions',
+    period: '2023 - Present',
     responsibilities: [
-      "Lead the development of responsive web applications using Vue.js and Nuxt",
-      "Implemented reusable component libraries that improved development efficiency by 30%",
-      "Collaborated with UX designers to create intuitive user interfaces",
-      "Mentored junior developers and conducted code reviews",
+      'Lead the development of responsive web applications using Vue.js and Nuxt',
+      'Implemented reusable component libraries that improved development efficiency by 30%',
+      'Collaborated with UX designers to create intuitive user interfaces',
+      'Mentored junior developers and conducted code reviews',
     ],
   },
   {
-    title: "Web Developer",
-    company: "Digital Innovations",
-    period: "2021 - 2023",
+    title: 'Web Developer',
+    company: 'Digital Innovations',
+    period: '2021 - 2023',
     responsibilities: [
-      "Developed and maintained client websites using React and Node.js",
-      "Created RESTful APIs for backend services",
-      "Improved website performance by optimizing code and assets",
-      "Integrated third-party services and payment gateways",
+      'Developed and maintained client websites using React and Node.js',
+      'Created RESTful APIs for backend services',
+      'Improved website performance by optimizing code and assets',
+      'Integrated third-party services and payment gateways',
     ],
   },
   {
-    title: "Freelance Web Developer",
-    company: "Self-employed",
-    period: "2020 - 2021",
+    title: 'Freelance Web Developer',
+    company: 'Self-employed',
+    period: '2020 - 2021',
     responsibilities: [
-      "Designed and developed custom websites for small businesses",
-      "Implemented e-commerce solutions using Shopify and WooCommerce",
-      "Provided ongoing maintenance and support for client websites",
-      "Created responsive designs that work across all devices",
+      'Designed and developed custom websites for small businesses',
+      'Implemented e-commerce solutions using Shopify and WooCommerce',
+      'Provided ongoing maintenance and support for client websites',
+      'Created responsive designs that work across all devices',
     ],
   },
-]);
+])
 </script>
 
 <style scoped>
@@ -244,11 +222,7 @@ const experienceItems = ref([
 
 .skill-progress-bar {
   height: 100%;
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   border-radius: 4px;
   transition: width 1s ease;
 }
@@ -259,7 +233,7 @@ const experienceItems = ref([
 }
 
 .timeline::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 7px;

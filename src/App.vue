@@ -29,6 +29,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--background-color);
 }
 
 .main-content {
@@ -37,20 +38,6 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-}
-
-.section {
-  margin-bottom: 2rem;
-  padding: 2rem;
-  background-color: var(--light-color);
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-}
-
-.section-title {
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
-  font-size: 1.8rem;
 }
 
 @media (max-width: 768px) {

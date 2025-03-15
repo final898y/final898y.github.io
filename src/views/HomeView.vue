@@ -3,9 +3,12 @@
     <section class="section introduction">
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
-        <div class="about-image">
-          <img src="../assets/pic/logo.png" alt="Profile picture" />
-        </div>
+        <v-img
+          :aspect-ratio="1"
+          width="250"
+          alt="Reddogs"
+          src="src/assets/images/avatar.png"
+        ></v-img>
         <div class="about-text">
           <p>
             Hello! I'm a passionate web developer with expertise in front-end and back-end
@@ -64,19 +67,19 @@ const featuredProjects = ref([
   {
     title: 'E-commerce Website',
     description: 'A fully responsive e-commerce website with secure payment processing.',
-    image: '',
+    image: 'src/assets/images/test-placeholder.png',
     tags: ['Vue.js', 'Node.js', 'Express', 'MongoDB'],
   },
   {
     title: 'Task Management App',
     description: 'A productivity application to help users organize and track their tasks.',
-    image: '',
+    image: 'src/assets/images/test-placeholder.png',
     tags: ['React', 'Firebase', 'Tailwind CSS'],
   },
   {
     title: 'Portfolio Website',
     description: 'A modern portfolio website for a professional photographer.',
-    image: '',
+    image: 'src/assets/images/test-placeholder.png',
     tags: ['Vue.js', 'SCSS', 'Responsive Design'],
   },
 ])
@@ -96,6 +99,7 @@ const featuredProjects = ref([
 .about-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  justify-items: center;
   gap: 2rem;
   align-items: center;
 }
@@ -118,7 +122,7 @@ const featuredProjects = ref([
 }
 
 .card-image {
-  height: 200px;
+  height: 300px;
   overflow: hidden;
 }
 
