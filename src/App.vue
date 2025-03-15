@@ -1,87 +1,130 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="account logo" class="logo" src="@/assets/logo.png"/>
-
-    <div class="wrapper">
-      <HelloWorld msg="Start the journey of exploration!" />
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/portfolio">Portfolio</RouterLink>
-      </nav>
-    </div>
-  </header>
-  <RouterView />
+  <div class="app">
+    <TheHeader />
+    <TheHero />
+    <main class="main-content">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
+    <TheFooter />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script setup lang="ts">
+import { onMounted } from "vue";
+import TheHeader from "./components/TheHeader.vue";
+import TheFooter from "./components/TheFooter.vue";
+import TheHero from "./components/TheHero.vue";
+
+
+onMounted(() => {
+  document.title = "My Portfolio";
+});
+</script>
+
+<style>
+:root {
+  --primary-color: #4d869c;
+  --secondary-color: #7ab2b2;
+  --accent-color: #fa7070;
+  --text-color: #333333;
+  --light-color: #cde8e5;
+  --background-color: #eef7ff;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-  border-radius: 50%;
-  width: 125px;
-  height: 125px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav {
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-nav a:first-of-type {
-  border: 0;
+.btn-primary {
+  background-color: var(--light-color);
+  color: var(--text-color);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+.btn-primary:hover {
+  background-color: #e64a19;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: var(--light-color);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
+.card {
+  background: var(--light-color);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 10px;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  .section {
+    padding: 1rem;
   }
 }
 </style>
