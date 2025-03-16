@@ -3,7 +3,7 @@
     <h1 class="section-title">Personal Portfolio</h1>
     <div class="section">
       <div class="card">
-        <img src="../assets/images/cardimg-1A2Bgame.png" alt="1A2B Game" />
+        <img src="/images/cardimg-1A2Bgame.png" alt="1A2B Game" />
         <div class="card-body">
           <h5>1A2B</h5>
           <p>使用Javascript和自定義樣式製作</p>
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="card">
-        <img src="../assets/images/cardimg-guessNumbergame.png" alt="Guess Number Game" />
+        <img src="/images/cardimg-guessNumbergame.png" alt="Guess Number Game" />
         <div class="card-body">
           <h5>終極密碼</h5>
           <p>使用Javascript和自定義樣式製作</p>
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="card">
-        <img src="../assets/images/cardimg-LittleMarygame.png" alt="Little Mary Game" />
+        <img src="/images/cardimg-LittleMarygame.png" alt="Little Mary Game" />
         <div class="card-body">
           <h5>小瑪莉</h5>
           <p>使用Javascript和自定義樣式製作</p>

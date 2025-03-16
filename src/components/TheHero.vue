@@ -1,7 +1,7 @@
 <template>
   <section class="hero">
     <v-layout height="600px">
-      <v-parallax scale="0.8" src="src/assets/images/hero-background.webp">
+      <v-parallax scale="0.8" src="/images/hero-background.webp">
         <div class="d-flex flex-column fill-height justify-center align-center">
           <h1 class="hero-title">Welcome to My Portfolio</h1>
           <p class="hero-description">

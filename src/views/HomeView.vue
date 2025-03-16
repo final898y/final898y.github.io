@@ -3,12 +3,7 @@
     <section class="section introduction">
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
-        <v-img
-          :aspect-ratio="1"
-          width="250"
-          alt="Reddogs"
-          src="src/assets/images/avatar.png"
-        ></v-img>
+        <v-img :aspect-ratio="1" width="250" alt="Reddogs" src="/images/avatar.png"></v-img>
         <div class="about-text">
           <p>
             Hello! I'm a passionate web developer with expertise in front-end and back-end
@@ -67,19 +62,19 @@ const featuredProjects = ref([
   {
     title: 'E-commerce Website',
     description: 'A fully responsive e-commerce website with secure payment processing.',
-    image: 'src/assets/images/test-placeholder.png',
+    image: '/images/test-placeholder.png',
     tags: ['Vue.js', 'Node.js', 'Express', 'MongoDB'],
   },
   {
     title: 'Task Management App',
     description: 'A productivity application to help users organize and track their tasks.',
-    image: 'src/assets/images/test-placeholder.png',
+    image: '/images/test-placeholder.png',
     tags: ['React', 'Firebase', 'Tailwind CSS'],
   },
   {
     title: 'Portfolio Website',
     description: 'A modern portfolio website for a professional photographer.',
-    image: 'src/assets/images/test-placeholder.png',
+    image: '/images/test-placeholder.png',
     tags: ['Vue.js', 'SCSS', 'Responsive Design'],
   },
 ])
