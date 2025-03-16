@@ -10,7 +10,7 @@
         <h2 class="card-title">Profile Overview</h2>
         <div class="profile-content">
           <div class="profile-avatar">
-            <img src="../assets/pic/logo.png" alt="Profile avatar" />
+            <img src="../assets/images/avatar.png" alt="Profile avatar" />
           </div>
           <div class="profile-info">
             <h3>{{ userEmail }}</h3>
