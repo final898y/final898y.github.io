@@ -1,11 +1,27 @@
+---
+title: 我的博客
+---
+
 # 文章總覽
 
 歡迎來到我的博客！這裡列出了所有文章，您可以按分類瀏覽或使用搜尋功能查找感興趣的內容。
 
 ## 最新文章
 
-- [我的第一篇程式設計文章](/articles/my-first-programming-post) - 2025-06-01
-- [生活隨筆：我的學習之旅](/articles/my-learning-journey) - 2025-05-30
+<script setup lang="ts">
+import { data as posts } from '../.vitepress/data/posts.data';
+
+// 除錯：輸出載入的文章數據
+console.log('All posts:', posts);
+</script>
+
+<ul>
+  <li v-for="post in posts" :key="post.url">
+    <a :href="post.url">{{ post.title }}</a> - {{ post.date }}
+    <p v-if="post.description">{{ post.description }}</p>
+  </li>
+  <li v-if="!posts.length">暫無文章，請稍後查看！</li>
+</ul>
 
 ## 分類
 
