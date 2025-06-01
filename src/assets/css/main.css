@@ -1,7 +1,7 @@
 :root {
   --primary-color: #4d869c;
   --secondary-color: #7ab2b2;
-  --accent-color: #fa7070;
+  --accent-color: #f7afaf;
   --text-color: #333333;
   --light-color: #cde8e5;
   --background-color: #eef7ff;
@@ -42,5 +42,5 @@
 }
 
 .btn-primary:hover {
-  background-color: #e64a19;
+  background-color: var(--accent-color);
 }

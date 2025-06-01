@@ -50,3 +50,4 @@ onMounted(() => {
   }
 }
 </style>
+<style src="./assets/css/animation.css"></style>

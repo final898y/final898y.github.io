@@ -50,7 +50,7 @@
     <section class="section contact">
       <h2 class="section-title">Get In Touch</h2>
       <p class="contact-text">Have a project in mind or want to chat? Feel free to reach out!</p>
-      <a href="mailto:youremail@example.com" class="btn btn-primary">Contact Me</a>
+      <a href="mailto:youremail@example.com" class="btn btn-primary shadow-pop-br">Contact Me</a>
     </section>
   </div>
 </template>
@@ -172,6 +172,10 @@ const featuredProjects = ref([
 .contact-text {
   max-width: 600px;
   margin: 0 auto 2rem;
+}
+.shadow-pop-br:hover {
+  -webkit-animation: shadow-pop-br 0.3s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+  animation: shadow-pop-br 0.3s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
 
 @media (max-width: 768px) {
