@@ -20,6 +20,7 @@
           <li class="nav-item">
             <router-link to="/skills" class="nav-link">Skills</router-link>
           </li>
+          <a href="blog/" class="nav-link" target="_blank">Blog</a>
           <li class="nav-item" v-if="isAuthenticated">
             <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
           </li>

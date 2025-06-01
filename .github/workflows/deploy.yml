@@ -41,7 +41,7 @@ jobs:
         run: npm ci
 
       # 构建项目
-      - name: Build
+      - name: Build Frontend and Docs
         run: npm run build
 
       # 配置 GitHub Pages
