@@ -1,61 +1,47 @@
-# 文件路径: .github/workflows/deploy.yml
-
-name: Deploy static content to Pages
+name: Deploy Main Site to GitHub Pages
 
 on:
-  # 当代码推送到 main 分支时触发工作流
   push:
     branches: ['main']
-  # 允许手动从 GitHub Actions 页面触发工作流
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 检出代码
+      # 檢出程式碼
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 设置 Node.js 环境
+      # 設置 Node.js
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
           cache: 'npm'
 
-      # 安装依赖
+      # 安裝依賴
       - name: Install dependencies
         run: npm ci
 
-      # 构建项目
-      - name: Build Frontend and Docs
+      # 建置主站
+      - name: Build main site
         run: npm run build
 
-      # 配置 GitHub Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      # 列出 dist 內容
+      - name: List dist contents
+        run: ls -la dist
 
-      # 上传构建结果
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # 上传 dist 文件夹
-          path: './dist'
-
-      # 部署到 GitHub Pages
+      # 部署到 gh-pages 分支
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          exclude_assets: 'blog' # 排除 blog/

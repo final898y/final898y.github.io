@@ -5,17 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-s type-check build-only docs:build-to-dist",
+    "build": "run-s type-check build-only",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/",
-    "docs:dev": "vitepress dev blog",
-    "docs:build": "vitepress build blog",
-    "docs:preview": "vitepress preview blog",
-    "docs:build-to-dist": "vitepress build blog --outDir dist/blog"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "pinia": "^3.0.2",
@@ -42,7 +38,6 @@
     "typescript": "~5.8.3",
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.6",
-    "vitepress": "^1.6.3",
     "vitest": "^3.1.4",
     "vue-tsc": "^2.2.10"
   }
