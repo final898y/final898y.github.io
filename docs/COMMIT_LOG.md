@@ -1,5 +1,14 @@
 # Commit Log
 
+## [2026-03-01] fix(router): 修復 GitHub Pages 靜態路徑與子專案 404 攔截問題
+
+- Hash: `TBD`
+- 改動方向: 防止 Vue Router 誤攔截位於 `public/playground/` 的靜態檔案與 `/blog/` 子目錄。
+- 具體內容:
+  - 更新 `src/router/index.ts`: 在 `beforeEach` 中加入白名單，針對 `/playground/` 與 `/blog/` 路徑執行硬導向。
+  - 更新 `src/views/PortfolioView.vue`: 將專案展示的 `demoUrl` 改為根相對路徑，提高跳轉穩定性。
+  - 升級版本至 `0.3.2`。
+
 ## [2026-02-28] feat(chore): 專案重啟與基礎建設配置
 
 - Hash: `b7fef62`

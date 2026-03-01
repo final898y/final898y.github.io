@@ -3,7 +3,7 @@ interface Props {
   title: string;
   description: string;
   imageUrl: string;
-  demoUrl: string;
+  demoUrl?: string; // 選填 (Optional)
   githubUrl?: string; // 選填 (Optional)
   tags: string[];
 }
@@ -53,6 +53,7 @@ defineProps<Props>();
       <!-- 連結按鈕 (Action Links) -->
       <div class="flex items-center gap-3 md:gap-4 mt-auto">
         <a
+          v-if="demoUrl"
           :href="demoUrl"
           target="_blank"
           rel="noopener noreferrer"

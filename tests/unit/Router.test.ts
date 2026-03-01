@@ -2,11 +2,21 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import router from "../../src/router";
 
 // 模擬所有 View 組件，避免圖片解析錯誤
-vi.mock("../../src/views/HomeView.vue", () => ({ default: { template: "<div>Home</div>" } }));
-vi.mock("../../src/views/PortfolioView.vue", () => ({ default: { template: "<div>Portfolio</div>" } }));
-vi.mock("../../src/views/AboutView.vue", () => ({ default: { template: "<div>About</div>" } }));
-vi.mock("../../src/views/SkillsView.vue", () => ({ default: { template: "<div>Skills</div>" } }));
-vi.mock("../../src/views/NotFoundView.vue", () => ({ default: { template: "<div>404</div>" } }));
+vi.mock("../../src/views/HomeView.vue", () => ({
+  default: { template: "<div>Home</div>" },
+}));
+vi.mock("../../src/views/PortfolioView.vue", () => ({
+  default: { template: "<div>Portfolio</div>" },
+}));
+vi.mock("../../src/views/AboutView.vue", () => ({
+  default: { template: "<div>About</div>" },
+}));
+vi.mock("../../src/views/SkillsView.vue", () => ({
+  default: { template: "<div>Skills</div>" },
+}));
+vi.mock("../../src/views/NotFoundView.vue", () => ({
+  default: { template: "<div>404</div>" },
+}));
 
 describe("Router", () => {
   beforeEach(async () => {

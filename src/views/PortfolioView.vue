@@ -21,7 +21,6 @@ const projects = [
      採用 Command-based 架構與 Clean Architecture， 
      結合數據富集分析、Prompt 工程化與雙層異常處理。 `,
     imageUrl: "/images/test-placeholder.png",
-    demoUrl: "https://github.com/final898y/LineNexus",
     githubUrl: "https://github.com/final898y/LineNexus",
     tags: ["Python", "FastAPI", "AI", "Clean Architecture"],
   },
@@ -47,7 +46,7 @@ const projects = [
 響應式設計、深色模式與快捷鍵操作，輕量卻強大。
   `,
     imageUrl: "/images/cardimg-FlipQuiz.png",
-    demoUrl: "../playground/FlipQuiz.html",
+    demoUrl: "/playground/FlipQuiz/index.html",
     githubUrl: "https://github.com/final898y/FlipQuiz",
     tags: ["JavaScript", "Markdown"],
   },
@@ -56,31 +55,22 @@ const projects = [
     title: "1A2B 猜數字遊戲",
     description: "經典邏輯遊戲，練習 JavaScript 的陣列運算與條件判斷。",
     imageUrl: "/images/cardimg-1A2Bgame.png",
-    demoUrl: "../playground/1A2Bgame.html",
+    demoUrl: "/playground/1A2Bgame.html",
     tags: ["JavaScript", "CSS", "HTML"],
   },
   {
     title: "終極密碼",
     description: "與電腦對決的範圍猜測遊戲，著重於狀態管理與 UI 更新。",
     imageUrl: "/images/cardimg-guessNumbergame.png",
-    demoUrl: "../playground/guessNumbergame.html",
+    demoUrl: "/playground/guessNumber.html",
     tags: ["JavaScript", "CSS", "DOM 操作"],
   },
   {
     title: "小瑪莉隨機轉盤",
     description: "模擬復古遊戲機檯，練習計時器 (setInterval) 與隨機算法。",
     imageUrl: "/images/cardimg-LittleMarygame.png",
-    demoUrl: "../playground/LittleMarygame.html",
+    demoUrl: "/playground/LittleMary.html",
     tags: ["JavaScript"],
-  },
-  {
-    title: "Creative Studio Landing",
-    description:
-      "An interactive landing page with custom WebGL shaders and smooth scroll animations. This project explores the boundary of browser performance.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
-    demoUrl: "https://example.com/demo5",
-    tags: ["Three.js", "GSAP", "WebGL"],
   },
 ];
 

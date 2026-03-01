@@ -2,7 +2,7 @@ name: Deploy Main Site to GitHub Pages
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -20,8 +20,8 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       # 安裝依賴
       - name: Install dependencies
@@ -30,6 +30,16 @@ jobs:
       # 建置主站
       - name: Build main site
         run: npm run build
+
+      # 從 gh-pages 分支恢復 blog 資料夾，確保它不會被覆蓋
+      - name: Restore blog from gh-pages
+        run: |
+          git fetch origin gh-pages --depth=1
+          git checkout origin/gh-pages -- blog || echo "Blog directory not found on gh-pages, skipping."
+          if [ -d "blog" ]; then
+            mv blog dist/
+            echo "Successfully restored blog directory to dist/"
+          fi
 
       # 列出 dist 內容
       - name: List dist contents
@@ -42,6 +52,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          exclude_assets: 'blog/**' # 排除 blog/
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          keep_files: false # 設為 false，這樣主專案刪除的檔案才會在遠端被清除

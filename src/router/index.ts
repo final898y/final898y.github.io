@@ -41,6 +41,13 @@ router.beforeEach((_to, _from, next) => {
 
   if (redirect) {
     sessionStorage.removeItem("redirect");
+
+    // 排除靜態頁面與外部專案路徑，避免被 Vue Router 攔截為 404
+    if (redirect.includes("/playground/") || redirect.includes("/blog/")) {
+      window.location.replace(redirect);
+      return;
+    }
+
     // 如果 redirect 包含路徑，則跳轉 (例如 "/portfolio")
     if (redirect !== "/" && redirect !== window.location.pathname) {
       next({ path: redirect });

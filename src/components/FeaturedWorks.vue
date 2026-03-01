@@ -85,7 +85,9 @@ onUnmounted(() => {
           <h3 class="font-serif mb-4 md:mb-8 leading-tight reveal-title">
             {{ projects[0].title }}
           </h3>
-          <p class="text-secondary/70 leading-relaxed max-w-md mb-8 reveal-desc">
+          <p
+            class="text-secondary/70 leading-relaxed max-w-md mb-8 reveal-desc"
+          >
             {{ projects[0].description }}
           </p>
           <router-link
@@ -127,7 +129,9 @@ onUnmounted(() => {
           <h3 class="font-serif mb-4 md:mb-8 leading-tight reveal-title">
             {{ projects[1].title }}
           </h3>
-          <p class="text-secondary/70 leading-relaxed max-w-md mb-8 reveal-desc">
+          <p
+            class="text-secondary/70 leading-relaxed max-w-md mb-8 reveal-desc"
+          >
             {{ projects[1].description }}
           </p>
           <router-link
