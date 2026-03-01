@@ -1,63 +1,53 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
-import Home from '../views/HomeView.vue'
-import Portfolio from '../views/PortfolioView.vue'
-import Skills from '../views/SkillsView.vue'
-import Login from '../views/LoginView.vue'
-import NotFound from '../views/NotFoundView.vue'
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    meta: { requiresAuth: false },
-  },
-  {
-    path: '/portfolio',
-    name: 'Portfolio',
-    component: Portfolio,
-    meta: { requiresAuth: false },
-  },
-  {
-    path: '/skills',
-    name: 'Skills',
-    component: Skills,
-    meta: { requiresAuth: false },
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: { requiresAuth: false },
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: () => import('../views/DashboardView.vue'),
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: NotFound,
-  },
-]
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
-})
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      component: HomeView,
+    },
+    {
+      path: "/portfolio",
+      name: "portfolio",
+      component: () => import("../views/PortfolioView.vue"),
+    },
+    {
+      path: "/skills",
+      name: "skills",
+      component: () => import("../views/SkillsView.vue"),
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: () => import("../views/AboutView.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: () => import("../views/NotFoundView.vue"),
+    },
+  ],
+  scrollBehavior() {
+    return { top: 0 };
+  },
+});
 
-// 路由守卫，用于验证用户身份
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+// GitHub Pages Refresh Fix: 偵測從 404.html 轉發過來的路徑
+router.beforeEach((_to, _from, next) => {
+  const redirect = sessionStorage.getItem("redirect");
 
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    next({ name: 'Login' })
-  } else {
-    next()
+  if (redirect) {
+    sessionStorage.removeItem("redirect");
+    // 如果 redirect 包含路徑，則跳轉 (例如 "/portfolio")
+    if (redirect !== "/" && redirect !== window.location.pathname) {
+      next({ path: redirect });
+      return;
+    }
   }
-})
+  next();
+});
 
-export default router
+export default router;

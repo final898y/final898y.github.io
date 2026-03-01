@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-訪問 `http://localhost:3000` 查看主站。
+訪問 `http://localhost:5173/` 查看主站。
 
 ### 建置
 

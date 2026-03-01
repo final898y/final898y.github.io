@@ -1,53 +1,49 @@
+<script setup lang="ts">
+import { RouterView } from "vue-router";
+import AppNavbar from "./components/AppNavbar.vue";
+</script>
+
 <template>
-  <div class="app">
-    <TheHeader />
-    <TheHero />
-    <main class="main-content">
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
+  <div class="min-h-screen">
+    <!-- 全域導覽列組件 -->
+    <AppNavbar />
+
+    <!-- 主要內容 -->
+    <main class="pt-24 md:pt-32 pb-32 md:pb-0">
+      <RouterView v-slot="{ Component }">
+        <transition
+          mode="out-in"
+          enter-active-class="transition-all duration-500 ease-out"
+          enter-from-class="opacity-0 translate-y-4"
+          enter-to-class="opacity-100 translate-y-0"
+          leave-active-class="transition-all duration-300 ease-in"
+          leave-from-class="opacity-100"
+          leave-to-class="opacity-0 translate-y-2"
+        >
           <component :is="Component" />
         </transition>
-      </router-view>
+      </RouterView>
     </main>
-    <TheFooter />
+
+    <!-- 頁尾 -->
+    <footer
+      class="section-container border-t border-primary/5 text-center mt-20"
+    >
+      <p class="text-secondary/50 text-sm">
+        © 2026 Final898y. Crafted with
+        <span class="text-accent">Oxidized Iron</span> &
+        <span class="text-soft">Tangerine Dream</span>.
+      </p>
+    </footer>
   </div>
 </template>
 
-<script setup lang="ts">
-import { onMounted } from 'vue'
-import TheHeader from './components/TheHeader.vue'
-import TheFooter from './components/TheFooter.vue'
-import TheHero from './components/TheHero.vue'
-
-onMounted(() => {
-  document.title = 'My Portfolio'
-})
-</script>
-
 <style>
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--background-color);
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .main-content {
-    padding: 10px;
-  }
-
-  .section {
-    padding: 1rem;
-  }
+/* 全域背景效果保持 */
+body {
+  background-attachment: fixed;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(250, 170, 141, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(155, 41, 21, 0.03) 0px, transparent 50%);
 }
 </style>
-<style src="./assets/css/animation.css"></style>

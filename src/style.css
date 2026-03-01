@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  /* 品牌核心色票 (Brand Color Palette) */
+  --color-primary: #1e152aff;
+  --color-secondary: #4c6663ff;
+  --color-accent: #9b2915ff;
+  --color-soft: #faaa8dff;
+  --color-surface: #feefddff;
+
+  /* 字體與間距 (Typography & Spacing) */
+  --font-sans: "Inter", "Noto Sans TC", system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", "Noto Serif TC", serif;
+
+  --shadow-subtle: 0 2px 10px rgba(30, 21, 42, 0.05);
+  --shadow-elegant: 0 10px 30px rgba(30, 21, 42, 0.1);
+  --radius-elegant: 1.25rem;
+
+  /* 流體字體規模 (Fluid Type Scale) - Optimized for Balance */
+  --font-size-h1: clamp(2.5rem, 9vw, 6.5rem); /* Hero Impact: 40px ~ 104px */
+  --font-size-h2: clamp(2rem, 6vw, 3.75rem); /* Section Headers: 32px ~ 60px */
+  --font-size-h3: clamp(1.5rem, 4vw, 2.5rem); /* Card Headers: 24px ~ 40px */
+  --font-size-display: clamp(
+    3rem,
+    10vw,
+    7.5rem
+  ); /* Magazine Accents: 48px ~ 120px */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  body {
+    @apply bg-surface text-primary antialiased selection:bg-accent/20 selection:text-accent;
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    font-size: clamp(1rem, 0.5vw + 0.8rem, 1.125rem);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight text-primary;
+    font-family: var(--font-serif);
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+    line-height: 1.05; /* 更緊湊的 Hero 行高 */
+  }
+  h2 {
+    font-size: var(--font-size-h2);
+    line-height: 1.2;
+  }
+  h3 {
+    font-size: var(--font-size-h3);
+    line-height: 1.3;
+  }
+
+  a {
+    @apply transition-all duration-300;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary/30 rounded-full hover:bg-secondary/50 transition-colors;
+  }
+}
+
+@layer components {
+  /* 雜誌風標題 - 稍微增加行高以提升平衡感 */
+  .display-title {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-display);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    @apply italic font-bold;
+  }
+
+  /* 按鈕組 */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all duration-300 active:scale-95 cursor-pointer;
+    @apply bg-primary text-surface hover:bg-accent hover:shadow-elegant hover:-translate-y-1;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all duration-300 active:scale-95 cursor-pointer;
+    @apply bg-soft/20 text-primary border border-soft/30 hover:bg-soft/40;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all duration-300 active:scale-95 cursor-pointer;
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-surface;
+  }
+
+  .nav-link {
+    @apply relative py-2 text-primary/70 hover:text-primary font-medium transition-colors cursor-pointer;
+  }
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+  }
+  .nav-link:hover::after,
+  .nav-link.router-link-active::after {
+    @apply w-full;
+  }
+  .nav-link.router-link-active {
+    @apply text-primary;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-16;
+    @apply md:px-12 md:py-32;
+  }
+
+  .card-elegant {
+    @apply bg-white/50 backdrop-blur-sm border border-primary/5 rounded-[2rem] p-8 shadow-subtle hover:shadow-elegant hover:-translate-y-2 transition-all duration-500;
+    display: inline-block;
+    width: 100%;
+    break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    @apply mb-6 relative inline-block;
+    font-size: var(--font-size-h2);
+  }
+  .section-title::before {
+    @apply content-[''] absolute -bottom-2 left-0 w-12 h-1 bg-accent;
+  }
+
+  .badge {
+    @apply px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-secondary/10 text-secondary;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.glass-effect {
+  @apply bg-white/40 backdrop-blur-md border border-white/20;
+}

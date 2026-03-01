@@ -1,185 +1,161 @@
+<script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import ProjectCard from "../components/ProjectCard.vue";
+
+const projects = [
+  {
+    title: "Travelogue",
+    description: `
+輕量化、視覺優先的個人旅行計畫 PWA。
+為那些熱愛規劃細節、追求美感的使用者打造的行程管理工具。
+基於 Firebase Firestore 實作，支援多端同步與離線快取，隨時記錄靈感。
+    `,
+    imageUrl: "/images/cardimg-Travelogue.png",
+    demoUrl: "https://travelogue.final898y.com/",
+    githubUrl: "https://github.com/final898y/Travelogue",
+    tags: ["JavaScript", "Firebase", "PWA"],
+  },
+  {
+    title: "LineNexus | AI 指令樞紐",
+    description: ` LINE 聊天機器人的多功能 AI 助手。
+     採用 Command-based 架構與 Clean Architecture， 
+     結合數據富集分析、Prompt 工程化與雙層異常處理。 `,
+    imageUrl: "/images/test-placeholder.png",
+    demoUrl: "https://github.com/final898y/LineNexus",
+    githubUrl: "https://github.com/final898y/LineNexus",
+    tags: ["Python", "FastAPI", "AI", "Clean Architecture"],
+  },
+
+  {
+    title: "Final898y's Blog",
+    description: `
+技術筆記 × 生活隨筆的靜態博客。
+使用 VitePress + TypeScript 建置，部署於 GitHub Pages。
+整合 Giscus 留言系統，支援互動交流與自動化部署。
+  `,
+    imageUrl: "/images/cardimg-blog.png",
+    demoUrl: "https://final898y.github.io/blog/",
+    githubUrl: "https://github.com/final898y/final898y-blog",
+    tags: ["VitePress", "TypeScript", "GitHub Pages"],
+  },
+  {
+    title: "FlipQuiz 翻測卡",
+    description: `
+翻牌記憶 × 測驗練習 (SRS)。
+內建 SM-2 演算法，支援翻卡與選擇題，
+提供瀏覽、手動/自動 SRS 與快速測驗四種模式。
+響應式設計、深色模式與快捷鍵操作，輕量卻強大。
+  `,
+    imageUrl: "/images/cardimg-FlipQuiz.png",
+    demoUrl: "../playground/FlipQuiz.html",
+    githubUrl: "https://github.com/final898y/FlipQuiz",
+    tags: ["JavaScript", "Markdown"],
+  },
+
+  {
+    title: "1A2B 猜數字遊戲",
+    description: "經典邏輯遊戲，練習 JavaScript 的陣列運算與條件判斷。",
+    imageUrl: "/images/cardimg-1A2Bgame.png",
+    demoUrl: "../playground/1A2Bgame.html",
+    tags: ["JavaScript", "CSS", "HTML"],
+  },
+  {
+    title: "終極密碼",
+    description: "與電腦對決的範圍猜測遊戲，著重於狀態管理與 UI 更新。",
+    imageUrl: "/images/cardimg-guessNumbergame.png",
+    demoUrl: "../playground/guessNumbergame.html",
+    tags: ["JavaScript", "CSS", "DOM 操作"],
+  },
+  {
+    title: "小瑪莉隨機轉盤",
+    description: "模擬復古遊戲機檯，練習計時器 (setInterval) 與隨機算法。",
+    imageUrl: "/images/cardimg-LittleMarygame.png",
+    demoUrl: "../playground/LittleMarygame.html",
+    tags: ["JavaScript"],
+  },
+  {
+    title: "Creative Studio Landing",
+    description:
+      "An interactive landing page with custom WebGL shaders and smooth scroll animations. This project explores the boundary of browser performance.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
+    demoUrl: "https://example.com/demo5",
+    tags: ["Three.js", "GSAP", "WebGL"],
+  },
+];
+
+const columnsCount = ref(3);
+
+const updateColumnsCount = () => {
+  if (window.innerWidth < 768) {
+    columnsCount.value = 1;
+  } else if (window.innerWidth < 1024) {
+    columnsCount.value = 2;
+  } else {
+    columnsCount.value = 3;
+  }
+};
+
+onMounted(() => {
+  updateColumnsCount();
+  window.addEventListener("resize", updateColumnsCount);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", updateColumnsCount);
+});
+
+const groupedProjects = computed(() => {
+  const cols = Array.from(
+    { length: columnsCount.value },
+    () => [] as typeof projects,
+  );
+  projects.forEach((project, index) => {
+    cols[index % columnsCount.value]!.push(project);
+  });
+  return cols;
+});
+</script>
+
 <template>
-  <div class="container">
-    <h1 class="section-title">Personal Portfolio</h1>
-
-    <div class="section">
-      <div v-for="project in projects" :key="project.id" class="card">
-        <div class="card-img-wrapper">
-          <img :src="project.image" :alt="project.title" />
-        </div>
-
-        <div class="card-body">
-          <h5 class="card-title">{{ project.title }}</h5>
-
-          <div class="tags">
-            <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
-          </div>
-
-          <p class="card-text">{{ project.description }}</p>
-
-          <a :href="project.link" target="_blank" class="btn-link">查看專案</a>
-        </div>
+  <div class="section-container">
+    <div
+      class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20"
+    >
+      <div>
+        <div class="badge mb-4">Crafting Excellence</div>
+        <h1 class="section-title italic">Selected Works.</h1>
       </div>
+      <p class="max-w-md text-secondary/70">
+        A collection of projects where design meets functionality, focusing on
+        user-centric digital experiences.
+      </p>
+    </div>
+
+    <div class="flex flex-row gap-8 items-start mt-12">
+      <div
+        v-for="(column, colIndex) in groupedProjects"
+        :key="colIndex"
+        class="flex flex-col gap-8 flex-1"
+      >
+        <ProjectCard
+          v-for="project in column"
+          :key="project.title"
+          v-bind="project"
+        />
+      </div>
+    </div>
+
+    <!-- 呼籲行動 (Call to Action) -->
+    <div class="mt-32 p-16 rounded-[3rem] bg-primary text-surface text-center">
+      <h2 class="mb-8 text-surface">Have a project in mind?</h2>
+      <p class="text-surface/70 mb-12 max-w-xl mx-auto">
+        I'm always looking for new challenges and interesting collaborations.
+        Let's build something amazing together.
+      </p>
+      <router-link to="/about" class="btn-secondary px-12"
+        >Get In Touch</router-link
+      >
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-/* 這裡我們定義一個名為 projects 的陣列 (Array)。
-  每個物件 { ... } 代表一個專案的資訊。
-  未來你想增加新作品，只需要在這個陣列最後面增加一個物件即可。
-*/
-const projects = [
-  {
-    id: 1,
-    title: '1A2B 猜數字遊戲',
-    description: '經典邏輯遊戲，練習 JavaScript 的陣列運算與條件判斷。',
-    image: '/images/cardimg-1A2Bgame.png',
-    link: '../projects/1A2Bgame.html',
-    tags: ['JavaScript', 'CSS'],
-  },
-  {
-    id: 2,
-    title: '終極密碼',
-    description: '與電腦對決的範圍猜測遊戲，著重於狀態管理與 UI 更新。',
-    image: '/images/cardimg-guessNumbergame.png',
-    link: '../projects/guessNumber.html',
-    tags: ['JavaScript', 'DOM 操作'],
-  },
-  {
-    id: 3,
-    title: '小瑪莉隨機轉盤',
-    description: '模擬復古遊戲機檯，練習計時器 (setInterval) 與隨機算法。',
-    image: '/images/cardimg-LittleMarygame.png',
-    link: '../playground/LittleMary.html',
-    tags: ['JavaScript', '動畫效果'],
-  },
-  {
-    id: 4,
-    title: 'FlipQuiz 翻測卡',
-    description: '具備 SM-2 記憶演算法的學習工具，支援深色模式與 PWA。',
-    image: '/images/cardimg-FlipQuiz.png',
-    link: '../playground/FlipQuiz/index.html',
-    tags: ['JavaScript', 'SRS 演算法', 'CSS 變數'],
-  },
-]
-</script>
-
-<style scoped>
-/* 基礎容器設定 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  text-align: center;
-  font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-/* 卡片排版容器 */
-.section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-/* 單個卡片樣式 */
-.card {
-  width: 320px;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #eee;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  display: flex;
-  flex-direction: column;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* 圖片處理：確保不同尺寸的圖片都能完美填滿 */
-.card-img-wrapper {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background-color: #f5f5f5;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 關鍵：這會像背景圖片一樣填滿區塊，不會壓扁圖片 */
-  transition: transform 0.5s ease;
-}
-
-.card:hover img {
-  transform: scale(1.1); /* 滑鼠懸停時圖片輕微放大，增加動感 */
-}
-
-/* 內容區塊 */
-.card-body {
-  padding: 20px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; /* 讓內容自動撐開，確保按鈕在底部對齊 */
-}
-
-.card-title {
-  font-size: 1.4rem;
-  margin: 0 0 10px 0;
-  color: #333;
-}
-
-/* 技術標籤樣式 */
-.tags {
-  margin-bottom: 12px;
-}
-
-.tag {
-  display: inline-block;
-  background: #e1f0f7;
-  color: #4d869c;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  margin-right: 5px;
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  flex-grow: 1;
-}
-
-/* 按鈕樣式 */
-.btn-link {
-  display: block;
-  text-align: center;
-  padding: 12px;
-  background-color: #4d869c;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.btn-link:hover {
-  background-color: #fa7070;
-}
-</style>
