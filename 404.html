@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // GitHub Pages SPA 刷新修復腳本 (Robust Version)
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+
+      // 將完整路徑、參數、Hash 存入 sessionStorage
+      sessionStorage.setItem('redirect', path + search + hash);
+
+      // 強制導回根目錄 (index.html)
+      // 注意：如果您部署在子目錄 (例如 /repo-name/)，這裡的 replace 邏輯需要對應調整
+      window.location.replace(
+        window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/'
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
