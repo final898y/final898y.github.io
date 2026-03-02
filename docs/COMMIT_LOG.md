@@ -1,5 +1,17 @@
 # Commit Log
 
+## [2026-03-02] style(brand): 優化品牌識別與頁面細節
+
+- Hash: `TBD`
+- 改動方向: 更新網站圖示、優化 Hero 區塊 LOGO 視覺效果、重構頁尾並更新聯繫資訊。
+- 具體內容:
+  - 將 `index.html` 的 favicon 換成 `FaviconLogo.svg`。
+  - 在 `HeroSection.vue` 加入 `MainLogo.svg` 並整合至品牌導引區，增加漂浮動效與發光背景。
+  - 在 `style.css` 新增 `drop-shadow-elegant` 與 `logo-glow` 樣式。
+  - 重構 `App.vue` 頁尾，加入 Logo、專業描述與正確的技術堆疊資訊。
+  - 更新 `AppNavbar.vue` 與頁尾的 "Hire Me" / "Contact" 連結至 `final898y@gmail.com`。
+  - 升級版本號至 `0.3.3`。
+
 ## [2026-03-01] fix(router): 修復 GitHub Pages 靜態路徑與子專案 404 攔截問題
 
 - Hash: `TBD`

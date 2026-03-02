@@ -15,13 +15,25 @@ onMounted(() => {
     class="section-container min-h-0 md:min-h-[85vh] pt-32 pb-20 md:py-0 flex flex-col justify-start md:justify-center relative"
   >
     <div class="max-w-5xl">
+      <!-- Brand & Status Intro -->
       <div
-        class="badge mb-6 md:mb-8 inline-block transition-all duration-700 delay-100 transform"
+        class="flex items-center gap-6 mb-12 md:mb-16 transition-all duration-1000 transform"
         :class="[
-          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4',
+          isLoaded
+            ? 'opacity-100 translate-y-0 scale-100'
+            : 'opacity-0 translate-y-4 scale-95',
         ]"
       >
-        Available for new projects
+        <div class="relative">
+          <div class="logo-glow opacity-60"></div>
+          <img
+            src="/images/MainLogo.svg"
+            alt="Main Logo"
+            class="relative z-10 w-16 h-16 md:w-20 md:h-20 drop-shadow-elegant animate-float"
+          />
+        </div>
+        <div class="h-8 w-[1px] bg-primary/10 hidden md:block"></div>
+        <div class="badge h-fit">Available for new projects</div>
       </div>
 
       <h1 class="mb-8 md:mb-10 leading-[1.1] tracking-tight">

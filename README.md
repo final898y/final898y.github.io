@@ -87,3 +87,5 @@ git push origin main
 ## 許可證
 
 [MIT License](LICENSE.md)
+
+**Version**: 0.3.3

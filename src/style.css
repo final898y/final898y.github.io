@@ -163,3 +163,11 @@
 .glass-effect {
   @apply bg-white/40 backdrop-blur-md border border-white/20;
 }
+
+.drop-shadow-elegant {
+  filter: drop-shadow(0 10px 20px rgba(30, 21, 42, 0.15));
+}
+
+.logo-glow {
+  @apply absolute -inset-4 bg-soft/15 blur-2xl rounded-full;
+}

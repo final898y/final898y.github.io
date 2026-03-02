@@ -25,15 +25,49 @@ import AppNavbar from "./components/AppNavbar.vue";
       </RouterView>
     </main>
 
-    <!-- 頁尾 -->
+    <!-- 頁尾 (Footer) -->
     <footer
-      class="section-container border-t border-primary/5 text-center mt-20"
+      class="max-w-7xl mx-auto px-6 md:px-12 py-12 border-t border-primary/5 mt-20"
     >
-      <p class="text-secondary/50 text-sm">
-        © 2026 Final898y. Crafted with
-        <span class="text-accent">Oxidized Iron</span> &
-        <span class="text-soft">Tangerine Dream</span>.
-      </p>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <!-- 左側：品牌與身份 -->
+        <div class="flex flex-col items-center md:items-start gap-2">
+          <div class="flex items-center gap-3">
+            <img src="/FaviconLogo.svg" alt="Logo" class="w-5 h-5 opacity-60" />
+            <span
+              class="font-serif italic font-bold text-primary tracking-tight"
+              >Final898y</span
+            >
+          </div>
+          <p
+            class="text-secondary/40 text-[10px] uppercase tracking-[0.2em] font-bold"
+          >
+            Full-stack Developer & Digital Architect
+          </p>
+        </div>
+
+        <!-- 右側：連結與版權 -->
+        <div class="flex flex-col items-center md:items-end gap-3">
+          <div class="flex gap-6">
+            <a
+              href="https://github.com/final898y"
+              target="_blank"
+              class="text-secondary/60 hover:text-primary transition-colors text-sm font-medium"
+              >GitHub</a
+            >
+            <a
+              href="mailto:final898y@gmail.com"
+              class="text-secondary/60 hover:text-primary transition-colors text-sm font-medium"
+              >Contact</a
+            >
+          </div>
+          <p class="text-secondary/40 text-[11px]">
+            © 2026 Final898y. Built with
+            <span class="text-primary/70 font-medium">Vue 3</span> &
+            <span class="text-primary/70 font-medium">Tailwind CSS</span>.
+          </p>
+        </div>
+      </div>
     </footer>
   </div>
 </template>

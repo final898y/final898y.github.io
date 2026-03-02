@@ -82,12 +82,12 @@ const getCurrentLabel = () => {
 
     <!-- Actions Area (Always visible "Hire Me") -->
     <div class="flex items-center gap-2 md:gap-4">
-      <router-link
-        to="/about"
+      <a
+        href="mailto:final898y@gmail.com"
         class="btn-primary py-1.5 md:py-2 px-4 md:px-6 text-[10px] md:text-sm uppercase tracking-wider font-bold"
       >
         Hire Me
-      </router-link>
+      </a>
     </div>
   </nav>
 
